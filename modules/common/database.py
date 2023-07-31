@@ -55,3 +55,46 @@ class Database():
         self.cursor.execute(query)
         record = self.cursor.fetchall()
         return record
+
+
+
+# Project task 5, Individual
+
+    def get_all_addresses(self):
+        query = "SELECT address, city, postalCode FROM customers"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+    
+
+    def select_product_by_id(self, product_id):
+        query = f"SELECT name, description FROM products WHERE id = {product_id}"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record 
+    
+
+    def update_product_id_by_id(self, product_id, id):
+        query = f"UPDATE products SET id = {id} WHERE id = {product_id}"
+        self.cursor.execute(query)
+        self.connection.commit()
+
+
+    def delete_product_by_name(self, product_name):
+        query = f"DELETE FROM products WHERE name = '{product_name}'"
+        self.cursor.execute(query)
+        self.connection.commit()
+
+
+    def get_all_products(self):
+        query = "SELECT id, name, description, quantity FROM products"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+    
+
+    def select_product_by_name(self, product_name):
+        query = f"SELECT name, description FROM products WHERE name != '{product_name}'"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record 
